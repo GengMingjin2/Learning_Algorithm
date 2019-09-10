@@ -55,7 +55,7 @@ class Logger:
         self.logger.critical(message)
 
 if __name__ == "__main__":
-    logger = Logger("log/log_test.txt", logging.ERROR, logging.DEBUG)
+    logger = Logger("log_test.txt", logging.ERROR, logging.DEBUG)
     logger.debug("A DEBUG message!")
     logger.error("An ERROR message!")
     logger.warn("A WARNING message!")
