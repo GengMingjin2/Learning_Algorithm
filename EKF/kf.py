@@ -8,7 +8,11 @@ Date: 2019/09/10 21:06:09
 """
 
 import numpy as np
+# Add the two lines codes if there is no figure showing in your PyCharm~
+import matplotlib
+matplotlib.use('TKAgg')
 import matplotlib.pyplot as plt
+from tqdm import tqdm
 
 def kf_experiment():
     """
@@ -34,7 +38,7 @@ def kf_experiment():
     # 定义观测矩阵协方差，因为观测量仅仅为一维的，且已经被人为假设成N(0,1)
     R_mat = np.mat([1])
 
-    for i in range(100): # 开始迭代~
+    for i in tqdm(range(100)): # 开始迭代~
         x_predict = F_mat * x_mat
         P_predict = F_mat * P_mat * F_mat.T + Q_mat
         K_mat = P_predict * H_mat.T / (H_mat * P_predict * H_mat.T + R_mat)
