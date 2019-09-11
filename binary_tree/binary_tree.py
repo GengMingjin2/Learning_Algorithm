@@ -27,7 +27,7 @@ class Node(object):
 
 class BinaryTree(object):
     """
-    Class defination of BinaryTree.
+    Class defination of BinaryTree.(Balanced)
     """
     def __init__(self):
         """
@@ -97,12 +97,147 @@ class BinaryTree(object):
             return []
         return self.postorder_traversal(root.lchild) + self.postorder_traversal(root.rchild) + [root.value]
 
+class SearchBinaryTree(object):
+    """
+    The defination for search binary tree.
+    """
+    def __init__(self):
+        """
+        The initialization for the class object.
+        """
+        self.root = None
+
+    def insert(self, root, value):
+        """
+        Insert a new node into the tree.
+        Args:
+            root: The root node of the tree.
+            value: value of the inserting node.
+        """
+        if root == None:
+            root = Node(value)
+        elif value < root.value:
+            root.lchild = self.insert(root.lchild, value)
+        elif value > root.value:
+            root.rchild = self.insert(root.rchild, value)
+        return root
+
+    def inorder_traversal(self, root):
+        """
+        The inorder traversal for a binary tree.
+        Args:
+            root: The root node of a tree.
+        Return:
+             res: the traversal results.
+        """
+        if root == None:
+            return []
+        return self.inorder_traversal(root.lchild) + [root.value] + self.inorder_traversal(root.rchild)
+
+    def preorder_traversal(self, root):
+        """
+        The preorder traversal for a binary tree.
+        Args:
+            root: The root node of a tree.
+        Return:
+            res: the traversal results.
+        """
+        if root == None:
+            return []
+        return [root.value] + self.preorder_traversal(root.lchild) + self.preorder_traversal(root.rchild)
+
+    def postorder_traversal(self, root):
+        """
+        The postorder traversal for a binary tree.
+        Args:
+            root: The root node of a tree.
+        Return:
+            res: the traversal results.
+        """
+        if root == None:
+            return []
+        return self.postorder_traversal(root.lchild) + self.postorder_traversal(root.rchild) + [root.value]
+
+    def query(self, root, value):
+        """
+        Query a value in a search binary tree.
+        Args:
+            root: The root node of the tree.
+            value: Value to be searched.
+        Return:
+            True: The value is in the tree.
+            False: The value is not in the tree.
+        """
+        if root == None:
+            return False
+        if root.value == value:
+            return True
+        elif value < root.value:
+            return self.query(root.lchild, value)
+        elif value > root.value:
+            return self.query(root.rchild, value)
+
+    def find_min(self, root):
+        """
+        Find the minimum in the tree.
+        Args:
+            root: The root node of the tree
+        Return:
+             The min value node in the tree.
+        """
+        if root.lchild:
+            return self.find_min(root.lchild)
+        else:
+            return root
+
+    def find_max(self, root):
+        """
+        Find the maximum in the tree.
+        Args:
+            root: The root node of the tree.
+        Return:
+            The max value node in the tree.
+        """
+        if root.rchild:
+            return self.find_max(root.rchild)
+        else:
+            return root
+
+    def delete(self, root, value):
+        """
+        Delete the node of which the node.value is value.
+        Args:
+            root: The root node of the tree.
+            value: The value of the node to be deleted.
+        Return:
+            The root node of the tree.
+        """
+        if root == None:
+            return
+        if value < root.value:
+            root.lchild = self.delete(root.lchild, value)
+        elif value > root.value:
+            root.rchild = self.delete(root.rchild, value)
+        else:
+            if root.lchild and root.rchild:
+                temp = self.find_min(root.rchild, value)
+                root.value = temp.value
+                root.rchild = self.delete(root.rchild, temp.value)
+            elif root.rchild == None and root.lchild == None:
+                root = None
+            elif root.right == None:
+                root = root.lchild
+            elif root.lchild == None:
+                root = root.rchild
+        return root
 
 if __name__ == "__main__":
     tree = BinaryTree()
+    stree = SearchBinaryTree()
     inlst = [1, 2, 3, 4, 5, 6, 7]
     for i in trange(len(inlst)):
         tree.add(inlst[i])
+        stree.root = stree.insert(stree.root, inlst[i])
         print("add %d into the tree success" % inlst[i])
     print("preorder: ", tree.preorder_traversal(tree.root))
     print("inorder: ", tree.inorder_traversal(tree.root))
