@@ -7,8 +7,6 @@ Author: gengmingjin(gengmingjin@bupt.edu.cn)
 Date: 2019/09/11 16:06:22
 """
 
-import os
-from tqdm import tqdm
 from tqdm import trange
 
 class Node(object):
@@ -242,3 +240,6 @@ if __name__ == "__main__":
     print("preorder: ", tree.preorder_traversal(tree.root))
     print("inorder: ", tree.inorder_traversal(tree.root))
     print("posorder: ", tree.postorder_traversal(tree.root))
+    print("sbt-preorder: ", stree.preorder_traversal(stree.root))
+    print("sbt-inorder: ", stree.inorder_traversal(stree.root))
+    print("sbt-postorder: ", stree.postorder_traversal(stree.root))
