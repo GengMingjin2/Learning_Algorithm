@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Description: The three kinds of traversal methods for a binary tree.
-             Including recurrent method and non-recurrent method.
-
+Description: The three kinds of non-recurrent traversal methods for a binary tree.(DFS)
+             BFS:
 Author: gengmingjin(gengmingjin@bupt.edu.cn)
 Date: 2019/09/12 09:31:22
 """
@@ -78,6 +77,25 @@ def nr_postorder_traversal(node):
         res.append(stack2.pop().value)
     return res
 
+def nr_level_traversal(node):
+    """
+    The non-recurrent level traversal method for a binary tree.
+    Args:
+        node: The node of the tree, usually root node.
+    Return:
+         res: the traversal resutls.
+    """
+    res = []
+    queue = [node]
+    while len(queue) > 0:
+        node = queue.pop(0)
+        res.append(node.value)
+        if node.lchild is not None:
+            queue.append(node.lchild)
+        if node.rchild is not None:
+            queue.append(node.rchild)
+    return res
+
 if __name__ == "__main__":
     stree = SearchBinaryTree()
     inlst = [1, 2, 3, 4, 5, 6, 7]
@@ -89,3 +107,4 @@ if __name__ == "__main__":
     print("nr_preorder_traversal: ", nr_preorder_traversal(root))
     print("nr_inorder_traversal: ", nr_inorder_traversal(root))
     print("nr_postorder_traversal: ", nr_postorder_traversal(root))
+    print("nr_level_traversal: ", nr_level_traversal(root))
