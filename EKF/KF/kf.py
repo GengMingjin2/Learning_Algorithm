@@ -18,7 +18,7 @@ def kf_experiment():
     """
     A simple experiment for Kalman Filter
     """
-    z = [i for i in range(100)]  # observations for position p
+    z = [i**2 / 10 for i in range(100)]  # observations for position p
     z_observation = np.mat(z)
 
     noise = np.round(np.random.normal(0, 1, 100), 2) # a noise for z, N(0,1)
@@ -34,7 +34,7 @@ def kf_experiment():
     # 定义状态转移协方差矩阵，数值小表示认为状态转移矩阵准确度高
     Q_mat = np.mat([[0.0001, 0], [0, 0.0001]])
     # 定义观测矩阵
-    H_mat = np.mat([1, 0])
+    H_mat = np.mat([0.2, 0])
     # 定义观测矩阵协方差，因为观测量仅仅为一维的，且已经被人为假设成N(0,1)
     R_mat = np.mat([1])
 
@@ -46,6 +46,7 @@ def kf_experiment():
         P_mat = (np.eye(2) - K_mat * H_mat) * P_predict
 
         plt.plot(x_mat[0, 0], x_mat[1, 0], 'ro', markersize = 1)
+        plt.plot(z[i], 0.2*i, 'bo', markersize = 1)
 
     plt.show()
 
