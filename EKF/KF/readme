@@ -6,3 +6,5 @@
 delta_t = 1(每秒预测和观测一次~)
 观测时引入的高斯噪声为一维高斯，服从N(0, 1)。
 ##深层原理的推导请移步博客[科研]https://www.cnblogs.com/bupt213/p/11505280.html
+
+[ekf]https://github.com/simondlevy/SensorFusion/blob/master/fusion.m
