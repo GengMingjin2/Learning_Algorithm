@@ -40,7 +40,7 @@ def kf_experiment2():
 
         plt.plot(x_mat[0, 0], x_mat[1, 0], 'ro', markersize = 1)
         plt.plot(z[i], label[i], 'bo', markersize = 1)
-        plt.plot(label[i], z[i] - x_mat[0, 0], 'go', markersize = 1)
+        plt.plot(z[i], z[i] - x_mat[0, 0], 'go', markersize = 1)
 
     plt.show()
 
