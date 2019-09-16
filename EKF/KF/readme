@@ -8,3 +8,4 @@ delta_t = 1(每秒预测和观测一次~)
 ##深层原理的推导请移步博客[科研]https://www.cnblogs.com/bupt213/p/11505280.html
 
 [ekf]https://github.com/simondlevy/SensorFusion/blob/master/fusion.m
+[kf]http://www.bzarg.com/p/how-a-kalman-filter-works-in-pictures/
