@@ -8,6 +8,8 @@ Date: 2019/09/10 21:06:09
 """
 
 import numpy as np
+import matplotlib
+matplotlib.use('TKAgg')
 import matplotlib.pyplot as plt
 from tqdm import trange
 

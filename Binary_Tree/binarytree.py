@@ -232,7 +232,7 @@ class SearchBinaryTree(object):
 if __name__ == "__main__":
     tree = BinaryTree()
     stree = SearchBinaryTree()
-    inlst = [1, 2, 3, 4, 5, 6, 7]
+    inlst = [1, 6, 5, 4, 3, 2, 7]
     for i in trange(len(inlst)):
         tree.add(inlst[i])
         stree.root = stree.insert(stree.root, inlst[i])
