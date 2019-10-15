@@ -1,7 +1,13 @@
-import os
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+Description: The Deep-First-Search Method for a binary tree(Recurrent).
 
+Author: gengmingjin(gengmingjin@bupt.edu.cn)
+Date: 2019/10/15 17:55:22
+"""
+import os
 os.sys.path.insert(0, "../../Binary_Tree/")
-from queue import Queue
 
 from tqdm import trange
 
