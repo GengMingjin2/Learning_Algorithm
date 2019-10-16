@@ -43,7 +43,8 @@ def dfs_nonrecurrent(root):
     while(len(stack) != 0):
         tmp = stack[-1]
         res.append(tmp.value)
-        stack.remove(tmp)
+        stack.pop()  #list.pop(), remove the element with the index=-1.
+                     # stack.pop() == stack.remove(tmp)
 
         if tmp.rchild:
             stack.append(tmp.rchild)
